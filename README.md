@@ -31,3 +31,24 @@
 
 ### Association
 - belongs_to :user
+
+## purchaseテーブル
+| Column | Type | Option |
+|-|-|-|
+| user | references | null: false, foreign_key: true|
+| item | references | null: false, foreign_key: true|
+
+
+### Association
+- has_one :user
+- has_one :items
+
+## postal_codeテーブル
+| Column | Type | Option |
+|-|-|-|
+| postal_code | integer | null: false |
+| prefecture | string | null: false |
+| city | string | null: false |
+| addresses | string | null: false |
+| building | string | null: false |
+| phone_number | integer | null: false |
