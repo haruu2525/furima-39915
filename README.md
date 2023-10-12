@@ -13,7 +13,8 @@
 | date_of_birth | date | null: false |
 
 ### Association
-- has_many :items
+- has_many :item
+- belongs_to :purchase
 
 ## itemsテーブル
 | Column | Type | Option |
@@ -31,8 +32,9 @@
 
 ### Association
 - belongs_to :user
+- belongs_to :purchase
 
-## purchaseテーブル
+## purchasesテーブル
 | Column | Type | Option |
 |-|-|-|
 | user | references | null: false, foreign_key: true|
@@ -41,14 +43,15 @@
 
 ### Association
 - has_one :user
-- has_one :items
+- has_one :item
 
-## postal_codeテーブル
+## postal_codesテーブル
 | Column | Type | Option |
 |-|-|-|
-| postal_code | integer | null: false |
-| prefecture | string | null: false |
+| postal_code | string | null: false |
+| prefecture_id | integer | null: false |
 | city | string | null: false |
 | addresses | string | null: false |
-| building | string | null: false |
-| phone_number | integer | null: false |
+| building | string |
+| phone_number | string | null: false |
+| purchase | references | null: false, foreign_key: true|
