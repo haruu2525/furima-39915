@@ -58,4 +58,4 @@
 | purchase | references | null: false, foreign_key: true|
 
 ### Association
-- has_one :purchase
+- belongs_to :purchase
