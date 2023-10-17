@@ -31,31 +31,31 @@ RSpec.describe PurchaseAddress, type: :model do
     end
 
     it "都道府県が空では登録できないこと" do
-      @purchase_address.postal_code = nil
+      @purchase_address.prefecture_id = nil
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Prefecture can't be blank")
     end
 
     it "市区町村が空では登録できないこと" do
-      @purchase_address.postal_code = nil
+      @purchase_address.city = nil
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("City can't be blank")
     end
 
     it "番地が空では登録できないこと" do
-      @purchase_address.postal_code = nil
+      @purchase_address.address = nil
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Address can't be blank")
     end
 
     it "電話番号が空では登録できないこと" do
-      @purchase_address.postal_code = nil
+      @purchase_address.phone_number = nil
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Phone number can't be blank")
     end
 
     it "電話番号が10桁以上11桁以内の半角数値のみ以外では登録できないこと" do
-      purchase_address.postal_code = nil
+      @purchase_address.phone_number = nil
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Phone number is invalid")
     end
@@ -64,12 +64,6 @@ RSpec.describe PurchaseAddress, type: :model do
       @purchase_address.token = nil
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
-
-    it "金額が空では登録できないこと" do
-      @purchase_address.price = nil
-      @purchase_address.valid?
-      expect(@purchase_address.errors.full_messages).to include("price can't be blank")
     end
-
   end
 end
