@@ -9,12 +9,14 @@ class PurchaseAddress
     validates :city
     validates :address
     validates :phone_number, format: { with: /\A\d{10,11}\z/ }
+    validates :user_id
+    validates :item_id
   end
   validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
 
   def save
     purchase = Purchase.create(user_id:, item_id:)
     Address.create(postal_code:, prefecture_id:, city:, address:, building:,
-                   phone_number:, purchase_id: purchase.id)
+                    phone_number:, purchase_id: purchase.id)
   end
 end

@@ -1,20 +1,17 @@
 class PurchasesController < ApplicationController
   before_action :set_public_key, only: [:index, :create]
   before_action :authenticate_user!
+  before_action :set_item, only: [:index, :create]
   before_action :redirect_to_root
 
   def index
-    @item = Item.find(params[:item_id])
     @purchase_address = PurchaseAddress.new
-  end
 
-  def new
-    @purchase_address = PurchaseAddress.new
   end
 
   def create
     @purchase_address = PurchaseAddress.new(purchase_params)
-    @item = Item.find(params[:item_id])
+    
     if @purchase_address.valid?
       pay_item
       @purchase_address.save
@@ -47,9 +44,13 @@ class PurchasesController < ApplicationController
   end
 
   def redirect_to_root
-    @item = Item.find(params[:item_id])
+    
     return unless current_user.id == @item.user.id || !@item.purchase.nil?
-
     redirect_to root_path
   end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+  
 end
