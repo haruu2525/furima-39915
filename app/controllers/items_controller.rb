@@ -24,6 +24,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if user_signed_in? && @item.purchase  != nil
+      return redirect_to root_path
+    end
   end
 
   def update
