@@ -44,9 +44,9 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :postal_code
+- has_one :address
 
-## postal_codesテーブル
+## addressesテーブル
 | Column | Type | Option |
 |-|-|-|
 | postal_code | string | null: false |
