@@ -9,3 +9,4 @@ FactoryBot.define do
     token { 'tok_kawaiisekai00000000000000000' }
   end
 end
+
